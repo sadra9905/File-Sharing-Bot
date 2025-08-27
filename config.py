@@ -25,8 +25,18 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
-#start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
+#start message with Persian/Farsi support
+START_MSG = os.environ.get("START_MESSAGE", """سلام {first} عزیز! 👋
+
+🎬 به ربات اشتراک گذاری فیلم و سریال خوش آمدید!
+
+این ربات امکانات زیر را ارائه می‌دهد:
+• 📁 ذخیره فایل‌های شخصی در کانال تلگرام  
+• 🔗 ایجاد لینک‌های اختصاصی برای دسترسی
+• 🎬 آپلود و مدیریت فیلم‌ها
+• 📺 آپلود و سازماندهی سریال‌ها
+
+برای دریافت فایل، لینک اشتراک گذاری را ارسال کنید.""")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
@@ -35,13 +45,16 @@ except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
 
 #Force sub message 
-FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>")
+FORCE_MSG = os.environ.get("FORCE_SUB_MESSAGE", "سلام {first} عزیز! 👋\n\n🔒 برای استفاده از ربات، ابتدا باید عضو کانال شوید.\n\nلطفا ابتدا در کانال عضو شده و سپس دوباره تلاش کنید.")
 
 #set your Custom Caption here, Keep None for Disable Custom Caption
 CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
 
 #set True if you want to prevent users from forwarding files from bot
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
+
+# Persian/Farsi language support for movie/series functionality
+MOVIE_SERIES_ENABLED = True if os.environ.get('MOVIE_SERIES_ENABLED', "True") == "True" else False
 
 #Set true if you want Disable your Channel Posts Share button
 if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':
