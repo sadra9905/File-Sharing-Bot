@@ -1,6 +1,6 @@
 {
-  "name": "TG File Share/Sharing Bot",
-  "description": "file sharing bot store posts and it can access by special links",
+  "name": "Persian Movie & Series Sharing Bot",
+  "description": "Enhanced file sharing bot with Persian interface for movie and series uploading to Telegram hosting",
   "keywords": [
     "telegram",
     "file",
@@ -49,6 +49,16 @@
     "PROTECT_CONTENT": {
       "description": "Protect contents from getting forwarded",
       "value": "False",
+      "required": false
+    },
+    "MOVIE_SERIES_ENABLED": {
+      "description": "Enable enhanced movie and series upload functionality",
+      "value": "True",
+      "required": false
+    },
+    "AUTO_DELETE_TIME": {
+      "description": "Auto-delete time in seconds (0 to disable)",
+      "value": "0",
       "required": false
     }
   },

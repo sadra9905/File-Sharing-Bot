@@ -6,6 +6,34 @@ from bot import Bot
 from config import ADMINS
 from helper_func import encode, get_message_id
 
+@Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('help'))
+async def admin_help(client: Client, message: Message):
+    """Show admin help with all available commands"""
+    help_text = """
+🔧 **راهنمای مدیریت ربات**
+
+📋 **دستورات اصلی:**
+• `/start` - شروع ربات
+• `/help` - نمایش این راهنما
+• `/stats` - آمار ربات
+
+🎬 **دستورات فیلم و سریال:**
+• `/movie` - آپلود فیلم جدید
+• `/series` - آپلود قسمت سریال
+• `/help_movie` - راهنمای فیلم و سریال
+
+🔗 **مدیریت لینک:**
+• `/genlink` - ایجاد لینک برای پست واحد
+• `/batch` - ایجاد لینک برای چندین پست
+
+📤 **نحوه آپلود عادی:**
+فایل خود را مستقیم ارسال کنید تا ربات آن را در کانال ذخیره کرده و لینک بسازد.
+
+⚡ **نکته:** برای آپلود فیلم و سریال از دستورات تخصصی استفاده کنید.
+"""
+    
+    await message.reply_text(help_text, disable_web_page_preview=True)
+
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
     while True:

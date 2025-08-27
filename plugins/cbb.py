@@ -26,3 +26,8 @@ async def cb_handler(client: Bot, query: CallbackQuery):
             await query.message.reply_to_message.delete()
         except:
             pass
+    elif data.startswith("copy_"):
+        # Handle copy link functionality for movie/series uploads
+        link_code = data.replace("copy_", "")
+        link = f"https://t.me/{client.username}?start={link_code}"
+        await query.answer(f"✅ لینک کپی شد!\n{link}", show_alert=True)
